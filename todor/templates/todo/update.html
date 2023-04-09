@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="container-sm">
+    <h3 class="text-center mt-3 mb-3">{% block title %}Modificar Tarea{% endblock %}</h3>
+    <form action="" method="post">
+        <div class="form-group">
+            <label for="title" class="">Título</label>
+            <input class="form-control" id="title" name="title" required value="{{todo.title}}" />
+        </div>
+        <div class="form-group">
+            <label for="des" class="mt-2">Descripción</label>
+            <textarea class="form-control " id="des" name="des" required>{{todo.des}}</textarea>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="state" class="mt-2">Completado</label>
+            <input class="form-check-input " type="checkbox" id="state" name="state" {% if todo.state == true %} checked {% endif %} />
+        </div>
+        <br>
+        <div class="d-flex justify-content-center">
+            <input type="submit" class="btn btn-primary mx-4" value="Guardar" />
+            <a href="{{url_for('todo.index')}}" class="btn btn-secondary">Cancelar</a>
+        </div>
+
+    </form>
+</section>
+
+
+
+{% endblock %}

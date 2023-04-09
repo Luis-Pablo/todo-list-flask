@@ -11,9 +11,7 @@ bp = Blueprint('auth', __name__, url_prefix ='/auth')
 def register():
     if request.method == 'POST':
         username = request.form['username']
-        password = request.form['password']
-        
-        
+        password = request.form['password']      
         
         user = User(username, generate_password_hash(password))
         
@@ -48,8 +46,7 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user.id
-            return redirect(url_for('todo.index'))
-        
+            return redirect(url_for('todo.index'))        
 
         flash(error)
         
